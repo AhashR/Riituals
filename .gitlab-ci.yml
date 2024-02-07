@@ -1,0 +1,68 @@
+# This file is a tested version for a build and deploy on the BIM hva-fys Docker cloud
+#
+# This file is based on a template, taken from 
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Docker.gitlab-ci.yml
+#
+# Build a Docker image with CI/CD using the BIM specific runner and then start it at the hva-fys.nl host.
+# Docker-in-Docker documentation: https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+#
+# Only edit this file when told to do so.
+# Instructions: Uncomment the tags -bim when you want to start using this CI/CE
+# Set the environment variables in your project
+# Have a teacher or assistent add the HVA-FYS runner to your Gitlab project.
+
+stages:
+  - build
+  - deploy
+
+# Following https://www.digitalocean.com/community/tutorials/how-to-set-up-a-continuous-deployment-pipeline-with-gitlab-ci-cd-on-ubuntu-18-04
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
+
+docker-build:
+  # Use the official docker image and build our container on the hva-fys server
+  image: docker:latest
+  stage: build
+  tags:
+#    - bim
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  # Default branch leaves tag empty (= latest tag)
+  # All other branches are tagged with the escaped branch name (commit ref slug)
+  script:
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+        tag=""
+        echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = 'latest'"
+      else
+        tag=":$CI_COMMIT_REF_SLUG"
+        echo "Running on branch '$CI_COMMIT_BRANCH': tag = $tag"
+      fi
+    #- docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" .
+    #- docker push "$CI_REGISTRY_IMAGE${tag}"
+    # Use the full name instead
+    - docker build --pull -t "$TAG_LATEST" .    
+    - docker push "$TAG_LATEST"
+  # Run this job in a branch where a Dockerfile exists
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - Dockerfile
+
+deploy:
+  # Here we will deploy (=start) the created container, using ssh commands
+  image: alpine:latest
+  stage: deploy
+  tags:
+#    - bim
+  script:
+    - chmod og= $ID_RSA_HVA_FYS
+    - apk update && apk add openssh-client
+    # Optional clean up action
+    #- ssh -i $ID_RSA_HVA_FYS -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP -p 22057 "docker container rm -f my-app || true"
+    - scp -i $ID_RSA_HVA_FYS -o StrictHostKeyChecking=no ./docker-compose.yml $SERVER_USER@$SERVER_IP:~/$CI_PROJECT_PATH_SLUG.docker-compose.yml
+    - ssh -i $ID_RSA_HVA_FYS -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker compose -f ./$CI_PROJECT_PATH_SLUG.docker-compose.yml up -d"
+

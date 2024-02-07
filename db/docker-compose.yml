@@ -1,0 +1,19 @@
+# This is the docker compose file to start a mariaDB server image which will contain the database as defined in schema.sql
+# Make sure to secure your database and choose the correct namings
+# FULL CAPITALS means: fixed value, and you will need to change/add it.
+version: '3'
+volumes:
+  data:
+services:
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: CHOOSE_STRONG_PASSWORD
+      MYSQL_DATABASE: NAME_DATABASE
+      MYSQL_USER: DATABASE_USER
+      MYSQL_PASSWORD: USER_PASSWORD
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - .:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
