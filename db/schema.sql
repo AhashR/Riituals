@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS `YOUR_DATABASE`;    
-CREATE SCHEMA `YOUR_DATABASE_SCHEMA`;
-USE `YOUR_DATABASE`;
+DROP SCHEMA IF EXISTS `Rituals`;    
+CREATE SCHEMA `Rituals`;
+USE `Rituals`;
 
 -- https://www.w3schools.com/sql/sql_comments.asp
 -- Create a User table, we probably need a login system
