@@ -8,10 +8,10 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: CHOOSE_STRONG_PASSWORD
-      MYSQL_DATABASE: NAME_DATABASE
-      MYSQL_USER: DATABASE_USER
-      MYSQL_PASSWORD: USER_PASSWORD
+      MYSQL_ROOT_PASSWORD: rituelen
+      MYSQL_DATABASE: Rituals
+      MYSQL_USER: RitualsUser
+      MYSQL_PASSWORD: RitualsPassword
     volumes:
       - ./db_data:/var/lib/mysql
       - .:/docker-entrypoint-initdb.d
