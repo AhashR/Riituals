@@ -17,6 +17,9 @@ def create_app():
     # Define a blueprint and use a prefix in the URL for it.
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
+    from app.handler import bp as handler_bp
+    # Define a blueprint and use a prefix in the URL for it.
+    app.register_blueprint(handler_bp, url_prefix='/handler')
     # Add your own blueprints here. Remember: at least 1 per team member
     #from app.MYBLUEPRINT import bp as events_bp
     #app.register_blueprint(MYBLUEPRINT.bp, url_prefix='/MYBLUEPRINT')

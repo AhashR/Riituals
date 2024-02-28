@@ -8,3 +8,5 @@ from app.db import select_all, select_one, execute_query
 def index():
     return render_template("index.html")
 
+    
+
