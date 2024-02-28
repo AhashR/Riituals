@@ -9,6 +9,7 @@
     <nav>
       <ul>
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('main.loginscherm') }}">inloggscherm</a></li>
         <li><a href="{{ url_for('auth.users') }}">Gebruikers</a></li>
         {% if g.user %}
           <li><a href="{{ url_for('auth.logout') }}">Uitloggen</a></li>

@@ -12,7 +12,7 @@ def register():
         lastname = request.form.get('lastname')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
-        # password = request.form.get('password')
+        password = request.form.get('password')
         add_user(firstname, lastname, email, email != '', phone)
         return redirect(url_for('main.index'))
 
@@ -26,7 +26,7 @@ def edit():
         lastname = request.form.get('lastname')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
-        # password = request.form.get('password')
+        password = request.form.get('password')
         update_user(g.user['UserId'], firstname, lastname, email, email != '', phone)
         return redirect(url_for('auth.edit'))
 

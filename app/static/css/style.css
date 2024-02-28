@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: whitesmoke;
+    color: rgb(255, 255, 255);
     font-size: 50px;
 }
 li {
@@ -17,10 +17,10 @@ nav {
 	margin: 0 0 1em 0;
 	padding: 0;
 	background-color: transparent;
-	border-bottom: 1px solid #ccc;  
+	border-bottom: 1px solid #000000;  
     text-align: center;
     font-size: 26px;
-    color: darkblue;
+    color: rgb(0, 0, 0);
 }
 
 input {
@@ -61,15 +61,13 @@ input {
 html, 
 body {
     height: 100%; 
-    background-image: url("/static/img/bankbilje6.jpeg");
-    background-repeat: no-repeat;
+    background-color: #000000;
     background-size:cover;
-    background-color: transparent;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 a, a:link, a:visited {
-  color: whitesmoke;
+  color: rgb(255, 255, 255);
 }
 #footer {
   position: fixed;

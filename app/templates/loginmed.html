@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login.css')}}"/>
+    <title>Medewerker Inloggen</title>
+</head>
+<body>
+    <h2>Medewerker Inloggen</h2>
+    <form action="/login" method="post">
+        <label for="username">Gebruikersnaam:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Inloggen">
+    </form>
+</body>
+</html>
+{% endblock %}
