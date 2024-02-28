@@ -13,7 +13,7 @@ def register():
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        add_user(firstname, lastname, email, email != '', phone)
+        add_user(firstname, lastname, email, email != '', phone, password)
         return redirect(url_for('main.index'))
 
     return render_template("auth/register.html")
