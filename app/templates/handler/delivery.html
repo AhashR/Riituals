@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<!-- Loads the stylesheet overViewPayments.css for use in overViewPayments.html -->
+  <h1>{% block title %}Winkels{% endblock %}</h1>
+  <a href="{{ url_for('auth.register') }}"
+                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                    href="#">
+                    <svg class="flex-shrink-0 w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 16 16" fill="none">
+                      <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                    Winkel toevoegen
+                  </a>
+                </div>
+              </div>
+            </div>
+{% endblock %}
+
+{% block content %}
+ <!-- Displays a table in which the various information, like amounts and the various events. -->
+    <table class = "pc row">
+      <thead class="paymentsTableHeader">
+        <th class="col-2">Filiaalnummer</th>
+        <th class="col-2">Straatnaam</th>
+        <th class="col-3">Plaatsnaam</th>
+        <th class="col-2">Emailadres:</th>
+        <th class="col-2">Telefoonnummer</th>
+    </thead>
+    
+
+      <tbody>
+        {% for store in stores %}
+        <!-- From here, the data is being pulled from the database by a python script and displayed on the webpage. -->
+        <tr onmouseover="this.bgColor='#6666ff'" onmouseout="this.bgColor=''">
+          <td class=>{{ store['branchnumber'] }}</td>
+          <td class=>{{ store['name'] }}</td>
+          <td class=>{{ store['location'] }}</td>
+          <td class=>{{ store['emailaddress'] }}</td>
+          <td class=>{{ store['telephonenumber'] }}</td>
+ 
+        </tr>
+        {% endfor %}
+      </tbody>
+  
+    </table>
+
+
+{% endblock %}

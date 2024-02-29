@@ -11,7 +11,8 @@
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
 
         {% if g.isHandler %}
-        <li><a href="{{ url_for('auth.register') }}">Winkel registreren</a></li>
+        <li><a href="{{ url_for('handler.delivery') }}">Winkels</a></li>
+
         {% endif %}
 
         {% if g.user %}
