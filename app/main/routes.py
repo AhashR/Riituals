@@ -9,15 +9,4 @@ def index():
     return render_template("index.html")
 
     
-@bp.route('/main/loginscherm')
-def loginscherm():
-    return render_template("loginscherm.html")
-    
-@bp.route('/main/loginbeh')
-def loginbeh():
-    return render_template("loginbeh.html")
 
-     
-@bp.route('/main/loginmed')
-def loginmed():
-    return render_template("loginmed.html")

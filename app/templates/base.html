@@ -9,15 +9,20 @@
     <nav>
       <ul>
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
-        <li><a href="{{ url_for('main.loginscherm') }}">inloggscherm</a></li>
-        <li><a href="{{ url_for('auth.users') }}">Gebruikers</a></li>
+
+        {% if g.isHandler %}
+        <li><a href="{{ url_for('auth.register') }}">Winkel registreren</a></li>
+        {% endif %}
+
         {% if g.user %}
+          <li><a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a></li>
           <li><a href="{{ url_for('auth.logout') }}">Uitloggen</a></li>
-          <li><a href="{{ url_for('auth.edit') }}">{{ g.user['firstname'] }}</a></li>
         {% else %}
           <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-          <li><a href="{{ url_for('auth.register') }}">Registreren</a></li>
+
         {% endif %}
+
+        
       </ul>
     </nav>
     <header>
