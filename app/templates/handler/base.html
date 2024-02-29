@@ -1,1 +1,22 @@
-Deze pagina is ter illustratie; al log je in als beheerder, krijg je deze webpagina te zien. De beheerder kan hiermee de gebruikers beheren en nieuwe gebruikers aanmaken. 
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Welkom bij ons BIM blok 2 project.{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>Hier komt een goede introductie voor onze applicatie.</p>
+  
+  <p>
+  Door te drukken op registreren en de link te veranderen van /auth/register
+    naar /auth/beheerder, kan je je als beheerder registreren. Deze functie kan worden verwijderd als er eenmaal één beheerder is aangemaakt,
+    maar het aanmaken van een beheerder is zo een stuk makkelijker.
+  </p>
+{% endblock %}
+
+
+
+
+
+
+in als beheerder, krijg je deze webpagina te zien. De beheerder kan hiermee de gebruikers beheren en nieuwe gebruikers aanmaken. 
