@@ -16,7 +16,7 @@ CREATE TABLE `User`(
 	`emailaddress` VARCHAR(250) NOT NULL,
     `telephonenumber` VARCHAR(15),
     `password` VARCHAR(15) NOT NULL,
-    `isHandler` BOOLEAN NOT NULL,
+    `isHandler` BOOLEAN,
     PRIMARY KEY(`userId`)
 );
 

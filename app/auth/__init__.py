@@ -29,16 +29,30 @@ def update_user(name, location, branchnumber, email, phone, password, userId):
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
+
     if user_id is None:
         g.user = None
+        g.isHandler = None
     else:
         g.user = select_one("SELECT * FROM User WHERE userId = %s", user_id)
-        g.isHandler = g.user['isHandler']
+        if g.user is None:
+            g.isHandler = None
+        else:
+            g.isHandler = g.user['isHandler']
+            
 # je moet ingelogd zijn om bepaalde functie te gebruiken #
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
+            return redirect(url_for('main.index'))
+        return view(**kwargs)
+    return wrapped_view
+
+def admin_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None or g.isHandler == 0:
             return redirect(url_for('main.index'))
         return view(**kwargs)
     return wrapped_view

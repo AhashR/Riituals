@@ -1,14 +1,13 @@
 # File provided by HBO-ICT
-from app.auth import bp, add_user, add_admin, update_user, login_required
+from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required
 from app.db import select_all, select_one
 
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
 
 # Registers a new user in the database
 @bp.route('/register', methods=['GET', 'POST'])
+@admin_required
 def register():
-    if not g.isHandler:
-        abort(403)
         
     # Add the required multiline docstring here
     if request.method == 'POST':
