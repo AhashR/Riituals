@@ -6,7 +6,8 @@ from app.db import select_all, select_one, execute_query
 
 @bp.route('/')
 def index():
+    if g.isHandler is not None:
+        return redirect(url_for('handler.index'))
     return render_template("index.html")
 
-    
 

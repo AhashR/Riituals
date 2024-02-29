@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Welkom, {{ g.user['name'] }}.{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+  Hier komt de agenda van de winkel waarop je hebt geklikt.
+  </p>
+{% endblock %}
+
+
