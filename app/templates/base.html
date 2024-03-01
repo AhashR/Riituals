@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Onze Applicatie - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/output.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
   </head>
 
@@ -12,7 +11,8 @@
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
 
         {% if g.isHandler %}
-        <li><a href="{{ url_for('auth.register') }}">Winkel registreren</a></li>
+        <li><a href="{{ url_for('handler.delivery') }}">Winkels</a></li>
+
         {% endif %}
 
         {% if g.user %}
