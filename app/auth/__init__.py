@@ -25,6 +25,20 @@ def update_user(name, location, branchnumber, email, phone, password, userId):
     values = (name, location, branchnumber, email, phone, password, userId)
     execute_query(query, values)
 
+# Selecteert alles van users waar het userId gelijk is aan het userId
+def fetch_users(branchnumber):
+    return select_one("SELECT * FROM User WHERE branchnumber = %s", branchnumber)
+
+def fetch_userid(branchnumber):
+    return select_one("SELECT userId FROM User WHERE branchnumber = %s", branchnumber)
+
+# Defines the update_user command, which
+# updates user information. The user can change their first name, last name, emailadress, password and telephonenumber.
+def admin_update_user(name, location, branchnumber, emailaddress, phone, password, userId):
+    query = "UPDATE User SET name = %s, location = %s, branchnumber = %s, emailaddress = %s, telephonenumber = %s, password = %s \
+       WHERE userId = %s"
+    values = (name, location, branchnumber, emailaddress, phone, password, userId)
+    execute_query(query, values)
 
 @bp.before_app_request
 def load_logged_in_user():
@@ -39,7 +53,7 @@ def load_logged_in_user():
             g.isHandler = None
         else:
             g.isHandler = g.user['isHandler']
-            
+
 # je moet ingelogd zijn om bepaalde functie te gebruiken #
 def login_required(view):
     @functools.wraps(view)

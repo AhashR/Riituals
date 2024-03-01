@@ -25,8 +25,10 @@
         <th class="col-2">Filiaalnummer</th>
         <th class="col-2">Straatnaam</th>
         <th class="col-3">Plaatsnaam</th>
-        <th class="col-2">Emailadres:</th>
+        <th class="col-2">Emailadres</th>
         <th class="col-2">Telefoonnummer</th>
+        <th class="col-2">Wijzigen</th>
+        <th class="col-2">Verwijderen</th>
     </thead>
     
 
@@ -41,6 +43,16 @@
           <td class=>{{ store['location'] }}</td>
           <td class=>{{ store['emailaddress'] }}</td>
           <td class=>{{ store['telephonenumber'] }}</td>
+          <td class="col-2">
+            <a href="{{ url_for('auth.edituser', branchnumber=store['branchnumber']) }}">
+            Wijzigen
+            </a>
+          </td>
+          <td class="col-2">
+            <a href="{{ url_for('auth.deleteuser', branchnumber=store['branchnumber']) }}">
+            Verwijderen
+            </a>
+          </td>
        
         </tr>
         {% endfor %}
