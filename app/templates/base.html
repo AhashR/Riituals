@@ -1,38 +1,315 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="nl">
   <head>
-    <title>Onze Applicatie - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
+    <meta name="charset" content="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <title>Rituals afleverschema{% block title %}{% endblock %}</title>
   </head>
 
-  <body class="main">
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('main.index') }}">Home</a></li>
-
-        {% if g.isHandler %}
-        <li><a href="{{ url_for('auth.register') }}">Winkel registreren</a></li>
-        {% endif %}
-
-        {% if g.user %}
-          <li><a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a></li>
-          <li><a href="{{ url_for('auth.logout') }}">Uitloggen</a></li>
-        {% else %}
-          <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-
-        {% endif %}
-
-        
-      </ul>
-    </nav>
-    <header>
-      {% block header %}{% endblock %}
-    </header>
+  <body>
     <div>
-      {% block content %}{% endblock %}
-    </div>
-    <footer id="footer">
-      Hier komt een goede footer.
-    </footer>
+        <style data-emotion="css-global 8xpctl">
+          *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg
+                *, symbol *):not(input[type="radio"])) {
+            all: unset;
+            display: revert;
+          }
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            -webkit-text-size-adjust: 100%;
+          }
+          a,
+          ol,
+          ul,
+          menu {
+            list-style: none;
+          }
+          img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+          }
+          table {
+            border-collapse: collapse;
+          }
+          input,
+          textarea {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            -webkit-user-select: auto;
+            font-family: "Scala Sans Pro", "Segoe UI", "Roboto",
+              "Helvetica Neue", sans-serif;
+            text-rendering: optimizeLegibility;
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+          }
+          textarea {
+            white-space: revert;
+          }
+          ::-webkit-input-placeholder {
+            color: unset;
+          }
+          ::-moz-placeholder {
+            color: unset;
+          }
+          :-ms-input-placeholder {
+            color: unset;
+          }
+          ::placeholder {
+            color: unset;
+          }
+          :where([hidden]) {
+            display: none;
+          }
+          :where([contenteditable]:not([contenteditable="false"])) {
+            -moz-user-modify: read-write;
+            -webkit-user-modify: read-write;
+            line-break: normal;
+            overflow-wrap: break-word;
+            -webkit-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+          }
+          :where([draggable="true"]) {
+            -webkit-user-drag: element;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #1a1919;
+            font-family: "ClassGarmnd BT", "Times New Roman", serif;
+            text-rendering: optimizeLegibility;
+          }
+          p,
+          label {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #1a1919;
+            font-family: "Scala Sans Pro", "Segoe UI", "Roboto",
+              "Helvetica Neue", sans-serif;
+            text-rendering: optimizeLegibility;
+          }
+          li,
+          span {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+          }
+          @media only screen and (max-width: 767px) {
+            h1 {
+              font-size: 32px;
+              letter-spacing: 0.6px;
+              line-height: 40px;
+            }
+          }
+          @media only screen and (min-width: 768px) {
+            h1 {
+              font-size: 28px;
+              letter-spacing: 0.6px;
+              line-height: 40px;
+            }
+          }
+          @media only screen and (min-width: 1440px) {
+            h1 {
+              font-size: 50px;
+              letter-spacing: 2px;
+              line-height: 58px;
+            }
+          }
+          @media only screen and (max-width: 767px) {
+            h2 {
+              font-size: 24px;
+              letter-spacing: 1px;
+              line-height: 30px;
+            }
+          }
+          @media only screen and (min-width: 768px) {
+            h2 {
+              font-size: 32px;
+              letter-spacing: 1px;
+              line-height: 42px;
+            }
+          }
+          @media only screen and (min-width: 1440px) {
+            h2 {
+              font-size: 40px;
+              letter-spacing: 0.8px;
+              line-height: 48px;
+            }
+          }</style
+        ><style data-emotion="css cqxqc5">
+          @media only screen and (min-width: 1024px) {
+            .css-cqxqc5 {
+              background-color: #1a1919;
+            }
+          }
+          .css-cqxqc5 .css-9jesz {
+            top: 64px;
+          }
+          @media only screen and (min-width: 768px) {
+            .css-cqxqc5 .css-9jesz {
+              top: 95px;
+            }
+          }
+        </style>
+        <header class="d-flex flex-column sticky-top w-100" style="background-color: #1a1919; z-index: 21;">
+          <style data-emotion="css 18qn78d">
+            .css-18qn78d {
+              background-color: #242222;
+            }
+            @media only screen and (max-width: 1023px) {
+              .css-18qn78d {
+                display: none;
+              }
+            }
+          </style>
+          <div class="css-18qn78d">
+            <style data-emotion="css 1gd86ki">
+              .css-1gd86ki {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                height: 32px;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+                max-width: 1440px;
+                padding: 8px 0;
+              }
+              @media only screen and (min-width: 1024px) {
+                .css-1gd86ki {
+                  -webkit-align-items: center;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+                  height: 48px;
+                  margin: 0 auto;
+                  padding: 0 40px;
+                }
+              }
+              @media only screen and (min-width: 1440px) {
+                .css-1gd86ki {
+                  padding: 0 96px;
+                }
+              }
+              @media only screen and (min-width: 1920px) {
+                .css-1gd86ki {
+                  padding: 0;
+                }
+              }
+            </style>
+            <div class="css-1gd86ki">
+              <div>
+              </div>
+              <div class="css-c52ley">
+                <style data-emotion="css 1ml8wrq">
+                  @media only screen and (max-width: 767px) {
+                    .css-1ml8wrq {
+                      padding-left: 20px;
+                    }
+                  }
+                  @media only screen and (min-width: 768px) {
+                    .css-1ml8wrq {
+                      left: 96px;
+                    }
+                  }
+                  @media only screen and (min-width: 1024px) {
+                    .css-1ml8wrq {
+                      display: -webkit-box;
+                      display: -webkit-flex;
+                      display: -ms-flexbox;
+                      display: flex;
+                      position: relative;
+                      top: 0;
+                      left: 0;
+                    }
+                  }
+                  .css-1ml8wrq svg {
+                    color: #ffffff;
+                    height: 12px;
+                    width: 130px;
+                  }
+                  @media only screen and (min-width: 768px) {
+                    .css-1ml8wrq svg {
+                      height: 16px;
+                      width: 173px;
+                    }
+                  }
+                  @media only screen and (min-width: 2560px) {
+                    .css-1ml8wrq svg {
+                      height: 24px;
+                      width: 267px;
+                    }
+                  }</style
+                ><a
+                  href="https://www.rituals.com"
+                  title="Rituals Logo"
+                  class="css-1ml8wrq"  
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 37">
+                    <path
+                      fill="currentColor"
+                      d="M286.60022,0 C292.580288,0 297.342192,1.85545723 300.885935,5.45722712 L300.885935,5.45722712 L295.902547,9.82300885 C292.580288,6.65781709 289.590255,5.56637169 286.157254,5.56637169 C280.730896,5.56637169 278.6268,8.18584071 278.6268,10.3687316 C278.6268,18.3362832 301.771871,10.3687316 301.993354,25.1032448 C301.993354,32.5250738 294.352159,37 286.157254,37 C281.173864,37 275.30454,35.1445427 270.764119,30.4513275 L270.764119,30.4513275 L275.747506,25.9764013 C278.405315,28.8141593 282.170543,30.778761 286.378737,30.778761 C291.362126,30.6696166 294.905869,28.8141593 294.905869,25.4306786 C294.905869,17.5722714 271.760798,25.2123895 271.760798,10.6961652 C271.760798,4.36578172 278.405315,0 286.60022,0 Z M129.346622,0 L129.346622,19.6460177 C129.346622,26.0855457 133.444075,30.0147492 138.648948,30.0147492 C143.85382,30.0147492 147.951273,26.1946902 147.951273,19.6460177 L147.951273,19.6460177 L147.951273,0 L154.595791,0 L154.595791,21.0648967 C154.595791,29.2507376 148.283499,36.2359882 138.648948,36.2359882 C129.014396,36.2359882 122.702104,29.2507376 122.702104,21.0648967 L122.702104,21.0648967 L122.702104,0 L129.346622,0 Z M329.014395,24.7758112 C332.225913,24.7758112 334.772978,27.2861356 334.772978,30.4513275 C334.772978,33.6165193 332.225913,36.1268435 329.014395,36.1268435 C325.913621,36.1268435 323.366554,33.5073746 323.366554,30.4513275 C323.366554,27.2861356 325.913621,24.7758112 329.014395,24.7758112 Z M361.683277,24.7758112 C364.784051,24.7758112 367.331118,27.2861356 367.44186,30.4513275 C367.44186,33.6165193 364.784051,36.1268435 361.683277,36.1268435 C358.471761,36.1268435 355.924692,33.5073746 355.924692,30.4513275 C355.924692,27.2861356 358.582503,24.7758112 361.683277,24.7758112 Z M394.241415,24.7758112 C397.452936,24.7758112 400,27.2861356 400,30.4513275 C400,33.6165193 397.452936,36.1268435 394.241415,36.1268435 C391.029899,36.1268435 388.482835,33.5073746 388.482835,30.4513275 C388.482835,27.2861356 391.140641,24.7758112 394.241415,24.7758112 Z M58.6932447,0.218289085 L58.6932447,35.6902654 L52.0487265,35.6902654 L52.0487265,0.218289085 L58.6932447,0.218289085 Z M21.3732004,0 C29.4573642,0 34.330011,5.23893804 34.330011,12.2241888 C34.330011,17.1770929 31.0264503,21.1125258 26.4128568,22.753386 L25.9136213,22.920354 L34.8837209,35.5811208 L26.578073,35.5811208 L19.047619,24.3392329 L10.9634551,24.3392329 L10.9634551,35.4719765 L4.31893687,35.4719765 L4.31893687,24.3392329 L0,24.3392329 L0,18.1179941 L4.31893687,18.1179941 L4.31893687,0 L21.3732004,0 Z M104.651163,0 L104.651163,6.22123895 L94.1306751,6.22123895 L94.1306751,35.5811208 L87.486157,35.5811208 L87.486157,6.22123895 L76.9656699,6.22123895 L76.9656699,0 L104.651163,0 Z M231.229235,0 L231.229235,29.359882 L245.404208,29.359882 L245.404208,20.8466077 L252.048725,20.8466077 L252.048725,35.5811208 L224.584717,35.5811208 L224.584717,0 L231.229235,0 Z M191.58361,0 L206.866002,35.4719765 L199.667774,35.4719765 L196.899224,28.8141593 L181.616833,28.8141593 L178.848283,35.4719765 L171.760797,35.4719765 L184.82835,5.89380529 L176.633444,5.89380529 L176.633444,0 L191.58361,0 Z M189.36877,10.259587 L184.053156,22.920354 L194.573643,22.920354 L189.36877,10.259587 Z M20.9302325,6.22123895 L10.9634551,6.22123895 L10.9634551,18.1179941 L20.9302325,18.1179941 C25.6921373,18.1179941 27.7962346,15.280236 27.7962346,12.1150443 C27.7962346,8.94985251 25.6921373,6.22123895 20.9302325,6.22123895 Z"
+                    ></path></svg
+                ></a>
+              </div>
+              <div>
+              </div>
+            </div>
+          </div>
+          <style data-emotion="css 8w9mh9">
+            @media only screen and (min-width: 768px) and (max-width: 1023px) {
+              .css-8w9mh9 {
+                padding: 0 40px;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+              }
+            }
+            @media only screen and (min-width: 1024px) {
+              .css-8w9mh9 {
+                padding: 0 40px;
+                position: relative;
+              }
+              .css-8w9mh9 ul + div {
+                top: 95px;
+              }
+            }
+            @media only screen and (min-width: 1440px) {
+              .css-8w9mh9 {
+                padding: 0 96px;
+              }
+            }
+            @media only screen and (min-width: 1920px) {
+              .css-8w9mh9 {
+                padding: 0;
+              }
+            }
+          </style>
+          <div class="css-8w9mh9 d-flex align-items-center flex-row m-auto p-3" style="height: 64px; max-width: 1440px;">
   </body>
 </html>
