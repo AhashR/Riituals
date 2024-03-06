@@ -6,7 +6,7 @@ from app.db import select_all, select_one, execute_query
 
 @bp.route('/')
 def index():
-    if g.isHandler is not None:
+    if g.user is not None and g.user['isHandler']:
         return redirect(url_for('handler.index'))
     return render_template("index.html")
 
