@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% extends 'base.html' %}
 
 {% block header %}
@@ -29,7 +31,7 @@
         <th class="col-2">Telefoonnummer</th>
         <th class="col-2">Wijzigen</th>
         <th class="col-2">Verwijderen</th>
-        <form action="{{ url_for('handler.delivery') }}" method="get">
+        <form action="{{ url_for('handler.search') }}" method="get">
           <input type="text" name="q" placeholder="Search">
           <input type="submit" value="Search">
       </form>
@@ -37,23 +39,23 @@
     
 
       <tbody>
-        {% for store in stores %}
+        {% for user in results %}
         <!-- From here, the data is being pulled from the database by a python script and displayed on the webpage. -->
         <tr onmouseover="this.bgColor='#6666ff'" onmouseout="this.bgColor=''">
-          <td class=>{{ store['branchnumber'] }}</td>
+          <td class=>{{ user['branchnumber'] }}</td>
           <td class>
-            <a href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ store['name'] }}</a>
+            <a href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ user['name'] }}</a>
           </td>
-          <td class=>{{ store['location'] }}</td>
-          <td class=>{{ store['emailaddress'] }}</td>
-          <td class=>{{ store['telephonenumber'] }}</td>
+          <td class=>{{ user['location'] }}</td>
+          <td class=>{{ user['emailaddress'] }}</td>
+          <td class=>{{ user['telephonenumber'] }}</td>
           <td class="col-2">
-            <a href="{{ url_for('auth.edituser', branchnumber=store['branchnumber']) }}">
+            <a href="{{ url_for('auth.edituser', branchnumber=user['branchnumber']) }}">
             Wijzigen
             </a>
           </td>
           <td class="col-2">
-            <a href="{{ url_for('auth.deleteuser', branchnumber=store['branchnumber']) }}">
+            <a href="{{ url_for('auth.deleteuser', branchnumber=user['branchnumber']) }}">
             Verwijderen
             </a>
           </td>
