@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <title>Rituals afleverschema{% block title %}{% endblock %}</title>
   </head>
@@ -173,18 +173,16 @@
             }
           }
         </style>
-        <header class="d-flex flex-column sticky-top w-100" style="background-color: #1a1919; z-index: 21;">
+        <header class="d-flex flex-column sticky-top w-100" style="background-color: #1a1919; z-index: 21; height: 110px;">
           <style data-emotion="css 18qn78d">
-            .css-18qn78d {
-              background-color: #242222;
-            }
+
             @media only screen and (max-width: 1023px) {
               .css-18qn78d {
                 display: none;
               }
             }
           </style>
-          <div class="css-18qn78d">
+          <div class="css-18qn78d" style="background-color: #242222;">
             <style data-emotion="css 1gd86ki">
               .css-1gd86ki {
                 display: -webkit-box;
@@ -267,7 +265,7 @@
                     }
                   }</style
                 ><a
-                  href="https://www.rituals.com"
+                  href=""
                   title="Rituals Logo"
                   class="css-1ml8wrq"  
                   ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 37">
@@ -281,35 +279,38 @@
               </div>
             </div>
           </div>
-          <style data-emotion="css 8w9mh9">
-            @media only screen and (min-width: 768px) and (max-width: 1023px) {
-              .css-8w9mh9 {
-                padding: 0 40px;
-                -webkit-box-pack: justify;
-                -webkit-justify-content: space-between;
-                justify-content: space-between;
-              }
-            }
-            @media only screen and (min-width: 1024px) {
-              .css-8w9mh9 {
-                padding: 0 40px;
-                position: relative;
-              }
-              .css-8w9mh9 ul + div {
-                top: 95px;
-              }
-            }
-            @media only screen and (min-width: 1440px) {
-              .css-8w9mh9 {
-                padding: 0 96px;
-              }
-            }
-            @media only screen and (min-width: 1920px) {
-              .css-8w9mh9 {
-                padding: 0;
-              }
-            }
-          </style>
-          <div class="css-8w9mh9 d-flex align-items-center flex-row m-auto p-3" style="height: 64px; max-width: 1440px;">
+
+          <div class="mt-3 mr-md-5 mr-3">
+            <a href="#inloggen " class="css-4fqci6 float-md-right float-none">
+             <svg class="float-right "
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_1_7782)">
+                <path
+                  d="M12 6C9.92813 6 8.25 7.67812 8.25 9.75C8.25 11.8219 9.92813 13.5 12 13.5C14.0709 13.5 15.75 11.8209 15.75 9.75C15.75 7.67906 14.0719 6 12 6ZM12 12.75C10.3458 12.75 9 11.4042 9 9.75C9 8.09578 10.3458 6.75 12 6.75C13.6542 6.75 15 8.09578 15 9.75C15 11.4042 13.6547 12.75 12 12.75ZM12 0C5.37188 0 0 5.37188 0 12C0 18.6281 5.37188 24 12 24C18.6281 24 24 18.6281 24 12C24 5.37188 18.6281 0 12 0ZM12 23.25C9.46688 23.25 7.13438 22.3983 5.29219 20.9798C5.26406 18.0938 7.6125 15.75 10.5 15.75H13.5C16.388 15.75 18.7359 18.0947 18.7078 20.9813C16.8656 22.3969 14.5312 23.25 12 23.25ZM19.4391 20.4141C19.1438 17.3813 16.6125 15 13.5 15H10.5C7.38656 15 4.85625 17.3803 4.56094 20.4141C2.22891 18.3516 0.75 15.3469 0.75 12C0.75 5.79844 5.79844 0.75 12 0.75C18.2016 0.75 23.25 5.79844 23.25 12C23.25 15.3469 21.7688 18.3516 19.4391 20.4141Z"
+                  fill="white"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_1_7782">
+                  <rect width="24" height="24" fill="white"></rect>
+                </clipPath>
+              </defs></svg>
+  </a>
+</div>
+
+          <div class="css-8w9mh9 d-flex align-items-center flex-row m-auto p-3" style="height: 64px; max-width: 1440px;"></div>
+
+        </header>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div>
+      {% block content %}{% endblock %}
+    </div>
+    
   </body>
 </html>
