@@ -1,42 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
+  <h1>{% block title %}Welkom bij het Rituals bestel-afleverschema{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ul class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ul>
-    
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../static/img/image-001.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Sea">
-      </div>
-      <div class="carousel-item">
-        <img src="../static/img/image-002.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image White">
-      </div>
-      <div class="carousel-item">
-        <img src="../static/img/image-003.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Black & Gold">
-      </div>
-    </div>
-    
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
-  </div>
-
-</div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <p>Hier komt een goede introductie voor onze applicatie.</p>
+  
+  <p>
+  Door te drukken op registreren en de link te veranderen van /auth/register
+    naar /auth/beheerder, kan je je als beheerder registreren. Deze functie kan worden verwijderd als er eenmaal één beheerder is aangemaakt,
+    maar het aanmaken van een beheerder is zo een stuk makkelijker.
+  </p>
 {% endblock %}
