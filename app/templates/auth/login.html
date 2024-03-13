@@ -5,19 +5,52 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <table>
-      <tr>
-        <td class="fitwidth">E-mailadres: </td>
-        <td><input class="text-white" type="text" name="emailaddress" required></td> 
-      </tr>
-      <tr>
-        <td class="fitwidth">Wachtwoord:</td>
-        <td><input type="password" name="password" required></td>
-      </tr>
-      <tr>
-        <td><button id="more" type="submit">Inloggen</button></td>
-      </tr>
-    </table>
-  </form>
+<div id="main" role="main" class="container clearfix">
+  <div id="primary" class="container-fluid">
+    <div>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary">
+            <span class="icon icon-arrow3--left"></span>Terug
+          </button>
+          <span class="icon-my-rituals"></span>
+          <p>Voer je e-mailadres in om je aan te melden of om een member te worden</p>
+          <form action="https://www.rituals.com/on/demandware.store/Sites-Global-Site/nl_NL/Login-CheckEmail" method="post" id="dwfrm_login">
+            <fieldset>
+              <div class="form-group">
+                <label for="dwfrm_login_username_d0zhnntagvxp">E-mailadres</label>
+                <input class="form-control" type="email" id="dwfrm_login_username_d0zhnntagvxp" name="dwfrm_login_username_d0zhnntagvxp" placeholder="E-mailadres" required />
+              </div>
+              <div class="form-group">
+                <label for="dwfrm_login_password_d0cksahwkxdq">Wachtwoord</label>
+                <input class="form-control" type="password" id="dwfrm_login_password_d0cksahwkxdq" name="dwfrm_login_password_d0cksahwkxdq" autocomplete="off" placeholder="Wachtwoord…" required />
+                <button type="button" class="btn btn-primary">
+                  <span class="icon-password-not-visible password-not-visible password-reveal-icon"></span>
+                  <span class="icon-password-visible password-visible password-reveal-icon"></span>
+                </button>
+              </div>
+              <a id="password-reset" tabindex="0" href="/nl-nl/reset-password" title="Verzoek om je wachtwoord opnieuw in te stellen">
+                Wachtwoord vergeten?
+              </a>
+              <input type="hidden" class="g-recaptcha-response" name="dwfrm_login_captchavalue" />
+              <div id="recaptcha-container-login"></div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" tabindex="0" id="btn-login" value="Doorgaan" name="dwfrm_login_checkemail">
+                  Doorgaan
+                  <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </button>
+              </div>
+              <input name="emailadress" type="hidden" value />
+              <input name="dwfrm_login_checkoutflow" type="hidden" value="false" />
+              <input name="dwfrm_login_ajaxloading" type="hidden" value="false" />
+              <input type="hidden" name="csrf_token" value="ALRkH1GGswf7VQNFpVgxxxpS3_4ctsjqGi0DWHZZasQeLUapzPGd7UHkieJyZ-IRz2dboRHYPFyADKbJMwePZar_3j5bwG2ZQUYClK3K-gCJtXabkmFKZK-Cway4zUKQ6fIGOxIProQ7dDqNP1kY_p7dBvI2EVKF4KEOYoS3j5rACzaTJzY=" />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 {% endblock %}
