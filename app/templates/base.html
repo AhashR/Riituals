@@ -8,6 +8,7 @@
     />
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.cdnfonts.com/css/adobe-garamond-pro-2" rel="stylesheet">
     
     <title>Rituals afleverschema{% block title %}{% endblock %}</title>
   </head>
@@ -281,7 +282,7 @@
           </div>
 
           <div class="mt-3 mr-md-5 mr-3">
-            <a href="#inloggen " class="css-4fqci6 float-md-right float-none">
+            <a href="{{ url_for('auth.login') }}" class="css-4fqci6 float-md-right float-none">
              <svg class="float-right "
               xmlns="http://www.w3.org/2000/svg"
               width="24"
