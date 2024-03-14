@@ -90,4 +90,3 @@ def logout():
 def users():
     users = select_all("SELECT * from User", None)
     return render_template("auth/users.html", users=users)
-    

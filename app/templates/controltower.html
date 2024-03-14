@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/controlltower.css')}}"/>
+    <title>Bestel en Aflever Schema</title>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="map"></div>
+        <div class="track-trace">
+            <h2>Track & Trace</h2>
+            <p>Verwachte aankomsttijd: 12:00</p>
+        </div>
+        <div class="delivery-info">
+            <h2>Leveringen</h2>
+            <ul class="deliveries">
+                <li>
+                    <div class="delivery">
+                        <span class="time">10:00</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                            <img src="../static/img/icon1.jpg" alt="Icon 1" class="icon">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="delivery">
+                        <span class="time">12:00</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                            <img src="../static/img/icon1.jpg" alt="Icon 2" class="icon">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="delivery">
+                        <span class="time">14:00</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                            <img src="../static/img/icon1.jpg" alt="Icon 3" class="icon">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function initMap() {
+            var amsterdam = {lat: 52.3667, lng: 4.8945};
+            var mapOptions = {
+                zoom: 12,
+                center: amsterdam
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: amsterdam,
+                map: map,
+                title: 'Amsterdam'
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwLiauoN8kV3lHh8ClIzDs9j_9Z_tDYzA&callback=initMap"></script>
+</body>
+</html>

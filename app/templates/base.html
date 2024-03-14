@@ -9,6 +9,9 @@
     <nav>
       <ul>
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('main.controltower') }}">bestel en levering</a></li>
+        <li><a href="{{ url_for('main.agenda') }}">agenda</a></li>
+
 
         {% if g.isHandler %}
         <li><a href="{{ url_for('auth.register') }}">Winkel registreren</a></li>
