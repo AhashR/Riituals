@@ -29,7 +29,7 @@ def add_user(name, locationId, branchnumber, email, phone, password):
     execute_query(query, values)
 
 def add_admin(name, locationId, email, phone, password):
-    query = "INSERT INTO User (name, locationId, emailaddress, telephonenumber, password, isHandler) VALUES (%s, %s, %s, %s, %s, %s, 1)"
+    query = "INSERT INTO User (name, locationId, emailaddress, telephonenumber, password, isHandler) VALUES (%s, %s, %s, %s, %s, 1)"
     values = (name, locationId, email, phone, password)
     execute_query(query, values)
     

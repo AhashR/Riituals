@@ -28,26 +28,6 @@ CREATE TABLE `User`(
 
 CREATE TABLE `Deliverydate`(
     -- Minimal user table, adjust up to your needs
-	`dateId` INT NOT NULL AUTO_INCREMENT,	
-    `arrivalDate` DATE NOT NULL,
-    PRIMARY KEY(`dateId`)
-);
-
-CREATE TABLE `Deliveries`(
-    -- Minimal user table, adjust up to your needs
-	`deliveryId` INT NOT NULL AUTO_INCREMENT,	
-    `departureTime` TIME NOT NULL,
-    `arrivalTime` TIME,
-    `arrivalEstimate` TIME NOT NULL,
-	`dateId` INT NOT NULL,
-    `userId` INT,
-    PRIMARY KEY(`deliveryId`),
-    FOREIGN KEY (`dateId`) REFERENCES `Deliverydate`(`dateId`),
-    FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
-);
-
-CREATE TABLE `Deliverydate`(
-    -- Minimal user table, adjust up to your needs
     `dateId` INT NOT NULL AUTO_INCREMENT,  
     `arrivalDate` DATE NOT NULL,
     PRIMARY KEY(`dateId`)
@@ -59,7 +39,7 @@ CREATE TABLE `Deliveries`(
     `departureTime` TIME NOT NULL,
     `arrivalTime` TIME,
     `arrivalEstimate` TIME NOT NULL,
-    `dateId` INT NOT NULL,
+    `dateId` INT,
     `userId` INT,
     PRIMARY KEY(`deliveryId`),
     FOREIGN KEY (`dateId`) REFERENCES `Deliverydate`(`dateId`),

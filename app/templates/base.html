@@ -10,13 +10,16 @@
     <nav>
       <ul>
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
-        <li><a href="{{ url_for('main.controltower') }}">Bestel en levering</a></li>
-        <li><a href="{{ url_for('main.beheerdertijden') }}">Aflevertijden Bewerken</a></li>
-        <li><a href="{{ url_for('main.agenda') }}">Agenda</a></li>
+        
+        
 
 
         {% if g.isHandler %}
         <li><a href="{{ url_for('handler.delivery') }}">Winkels</a></li>
+        <li><a href="{{ url_for('handler.beheerdertijden') }}">Aflevertijden Bewerken</a></li>
+
+        {% else %}
+        <li><a href="{{ url_for('handler.controltower') }}">Bestel en levering</a></li>
 
         {% endif %}
 
