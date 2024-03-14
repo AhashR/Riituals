@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/controlltower.css')}}"/>
+    <title>Beheerder Aflevertijden Winkels</title>
+</head>
+{% block content %}
+<body>
+    <h1>Beheerder Aflevertijden Winkels</h1>
+    <form method="post">
+        <label for="store">Selecteer een winkel:</label>
+        <select id="store" name="store">
+            {% for store in stores %}
+                <option value="{{ store.userId }}">{{ store.name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="arrivalTime">Aankomsttijd:</label>
+        <input type="time" id="arrivalTime" name="arrivalTime" required><br><br>
+
+        <label for="arrivalEstimate">Aankomstschatting:</label>
+        <input type="time" id="arrivalEstimate" name="arrivalEstimate" required><br><br>
+
+        <label for="departureTime">Vertrektijd:</label>
+        <input type="time" id="departureTime" name="departureTime" required><br><br>
+
+        <input type="submit" value="Opslaan">
+    </form>
+</body>
+{% endblock %}
+</html>

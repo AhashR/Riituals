@@ -10,8 +10,9 @@
     <nav>
       <ul>
         <li><a href="{{ url_for('main.index') }}">Home</a></li>
-        <li><a href="{{ url_for('main.controltower') }}">bestel en levering</a></li>
-        <li><a href="{{ url_for('main.agenda') }}">agenda</a></li>
+        <li><a href="{{ url_for('main.controltower') }}">Bestel en levering</a></li>
+        <li><a href="{{ url_for('main.beheerdertijden') }}">Aflevertijden Bewerken</a></li>
+        <li><a href="{{ url_for('main.agenda') }}">Agenda</a></li>
 
 
         {% if g.isHandler %}

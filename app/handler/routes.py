@@ -20,3 +20,7 @@ def delivery():
 @admin_required
 def agenda(branchnumber):
     return render_template("handler/agenda.html", branchnumber=branchnumber)
+
+
+
+
