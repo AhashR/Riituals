@@ -36,7 +36,7 @@
     </thead>
     
 
-      <tbody>
+      <tbody >
         {% for store in stores %}
         <!-- From here, the data is being pulled from the database by a python script and displayed on the webpage. -->
         <tr onmouseover="this.bgColor='#6666ff'" onmouseout="this.bgColor=''">
@@ -44,7 +44,7 @@
           <td class>
             <a href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ store['name'] }}</a>
           </td>
-          <td class=>{{ store['location'] }}</td>
+          <td class=>{{ store['userLocation'] }}</td>
           <td class=>{{ store['emailaddress'] }}</td>
           <td class=>{{ store['telephonenumber'] }}</td>
           <td class="col-2">
