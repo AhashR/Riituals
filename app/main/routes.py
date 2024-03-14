@@ -11,3 +11,6 @@ def index():
     return render_template("index.html")
 
 
+@bp.route('/main/agenda')
+def agenda():
+    return render_template("agenda.html")
