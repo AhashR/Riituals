@@ -125,3 +125,14 @@ th {
   height: 60%;
   overflow-y: scroll;
  }
+
+ .notification {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  background-color: #ded8d8; /* Red background color */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  border-radius: 2px; /* Rounded corners */
+  z-index: 1; /* Make it appear on top */
+}
