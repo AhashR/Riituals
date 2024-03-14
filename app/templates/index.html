@@ -11,31 +11,56 @@
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ul>
-    
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../static/img/image-001.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Sea">
-      </div>
-      <div class="carousel-item">
-        <img src="../static/img/image-002.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image White">
-      </div>
-      <div class="carousel-item">
-        <img src="../static/img/image-003.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Black & Gold">
+
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/img/image-001.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Sea">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/img/image-002.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image White">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/img/image-003.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Black & Gold">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+</div>
+</div>
+
+<style>
+  .center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
+
+<div class="row">
+  <div class="col">
+    <h1 class="text-center pt-5 pb-5">Welkom bij Rituals</h1>
+  </div>
+</div>
+<div>
+  <div class="center-content">
+    <div class="row w-75">
+      <div class="col">
+        <p class="text-center pt-5 pb-5" style="background-color: rgb(250,249,247);">We zijn verheugd om ons afleverschema met u te delen, zodat u een duidelijk inzicht krijgt in wanneer uw winkel voorraad zal ontvangen. Ons toegewijde team werkt nauw samen met onze leveranciers om ervoor te zorgen dat uw winkel regelmatig wordt bevoorraad met onze hoogwaardige producten</p>
       </div>
     </div>
-    
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
   </div>
+</div>
 
-</div>
-</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
