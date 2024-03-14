@@ -1,0 +1,92 @@
+.container {
+    width: 100%; /* Neem de volledige breedte van het scherm in */
+}
+
+.track-trace {
+    flex-basis: 50%; /* Neem de helft van de breedte van de container */
+    padding: 20px; /* Voeg wat ruimte toe aan de randen */
+    text-align: center; /* Uitlijnen naar rechts */
+}
+
+.track-trace .track-trace-title {
+    font-size: 24px; /* Vergrote lettergrootte voor het titelkopje */
+    margin-bottom: 10px; /* Voeg wat ruimte toe onder het titelkopje */
+}
+
+.track-trace-info {
+    font-size: 18px; /* Lettergrootte voor extra informatie */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+#map {
+    flex: 1;
+    height: 100%;
+}
+.track-trace {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.delivery-info {
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+}
+.delivery-info h2 {
+    font-size: 24px; /* Grotere kopgrootte */
+    text-align: center;
+}
+.deliveries {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.delivery {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.time {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.progress-bar {
+    flex: 1;
+    background-color: #f0f0f0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.progress {
+    background-color: #4caf50;
+    height: 100%;
+    width: 0;
+    transition: width 1s ease-in-out; /* Animatie voor overgang */
+}
+.icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: auto;
+}

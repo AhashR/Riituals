@@ -31,3 +31,31 @@ def delivery():
 @admin_required
 def agenda(branchnumber):
     return render_template("handler/agenda.html", branchnumber=branchnumber)
+
+@bp.route('/controltower')
+def controltower():
+    return render_template("handler/controltower.html")
+
+
+@bp.route('/beheerdertijden', methods=['GET', 'POST'])
+@login_required
+def beheerdertijden():
+    if request.method == 'POST':
+        # Verwerk het formulier en voeg de gegevens toe aan de database
+        userId = request.form['store']
+        arrival_time = request.form['arrivalTime']
+        arrival_estimate = request.form['arrivalEstimate']
+        departure_time = request.form['departureTime']
+        
+        # Voeg de gegevens toe aan de tabel Deliveries, gebruikmakend van de geselecteerde winkel
+        execute_query("INSERT INTO Deliveries (userId, departureTime, arrivalTime, arrivalEstimate) VALUES (%s, %s, %s, %s)", (userId, departure_time, arrival_time, arrival_estimate))
+        
+        flash('Aflevertijden succesvol toegevoegd', 'success')
+        # return redirect(url_for('beheerdertijden'))
+
+    # Als het een GET-verzoek is, haal dan de lijst met winkels op en render de pagina
+    stores = select_all("SELECT * FROM User WHERE isHandler = 0")
+    return render_template("handler/beheerdertijden.html", stores=stores)
+
+
+
