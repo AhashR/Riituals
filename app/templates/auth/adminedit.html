@@ -5,31 +5,31 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post" action="{{ url_for('auth.edituser', branchnumber= store['branchnumber']) }}">
+  <form method="post" action="{{ url_for('auth.edituser', branchnumber= store[0]['branchnumber']) }}">
     <table>
       <tr>
         <td class="fitwidth">Straatnaam + huisnummer: </td>
-        <td><input type="text" name="name" value="{{ store['name'] }}"/></td> 
+        <td><input type="text" name="name" value="{{ store[0]['name'] }}"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">Plaatsnaam: </td>
-        <td><input type="text" name="location" value="{{ store['location'] }}"/></td> 
+        <td><input type="text" name="location" value="{{ store[0]['userLocation'] }}"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">Filiaalnummer: </td>
-        <td><input type="text" name="branchnumber" value="{{ store['branchnumber'] }}"/></td> 
+        <td><input type="text" name="branchnumber" value="{{ store[0]['branchnumber'] }}"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">E-mailadres:</td>
-        <td><input type="email" name="emailaddress" value="{{ store['emailaddress'] }}"/></td>
+        <td><input type="email" name="emailaddress" value="{{ store[0]['emailaddress'] }}"/></td>
       </tr>
       <tr>
         <td class="fitwidth">Telefoonnummer:</td>
-        <td><input type="text" name="telephonenumber" value="{{ store['telephonenumber'] }}"/></td>
+        <td><input type="text" name="telephonenumber" value="{{ store[0]['telephonenumber'] }}"/></td>
       </tr>
       <tr>
         <td class="fitwidth">Wachtwoord:</td>
-        <td><input type="password" name="password" value="{{ store['password'] }}"/></td>
+        <td><input type="password" name="password" value="{{ store[0]['password'] }}"/></td>
       </tr>
       <tr>
         <td><button id="more" type="submit">Wijzigen</button></td>
