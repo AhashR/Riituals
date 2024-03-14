@@ -36,9 +36,9 @@ CREATE TABLE `Deliverydate`(
 CREATE TABLE `Deliveries`(
     -- Minimal user table, adjust up to your needs
 	`deliveryId` INT NOT NULL AUTO_INCREMENT,	
-    `departureTime` TIMESTAMP NOT NULL,
-    `arrivalTime` TIMESTAMP,
-    `arrivalEstimate` TIMESTAMP NOT NULL,
+    `departureTime` TIME NOT NULL,
+    `arrivalTime` TIME,
+    `arrivalEstimate` TIME NOT NULL,
 	`dateId` INT NOT NULL,
     `userId` INT,
     PRIMARY KEY(`deliveryId`),
