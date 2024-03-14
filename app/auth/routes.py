@@ -1,14 +1,13 @@
 # File provided by HBO-ICT
-from app.auth import bp, add_user, add_admin, update_user, login_required
-from app.db import select_all, select_one
+from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required, fetch_users, admin_update_user, fetch_userid
+from app.db import select_all, select_one, execute_query
 
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
 
 # Registers a new user in the database
 @bp.route('/register', methods=['GET', 'POST'])
+@admin_required
 def register():
-    if not g.isHandler:
-        abort(403)
         
     # Add the required multiline docstring here
     if request.method == 'POST':
@@ -58,6 +57,53 @@ def edit():
 
     return render_template("auth/edit.html", user=g.user)
 
+
+# Wijzigen winkelinformatie
+@bp.route('/edituser/<int:branchnumber>', methods=['GET', 'POST'])
+@login_required
+def edituser(branchnumber):
+    store = fetch_users(branchnumber)
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    storeUserId = select_one('SELECT userId FROM User WHERE branchnumber = %s', (branchnumber,))
+
+    if not storeUserId: 
+        flash("U heeft geen toegang tot deze klant, omdat u deze niet heeft aangemaakt.", "error")
+        return redirect(url_for('handler.delivery'))
+    
+    if request.method == 'POST':
+        if storeUserId:
+            name = request.form.get('name')
+            location = request.form.get('location')
+            branchnumber = request.form.get('branchnumber')
+            emailaddress = request.form.get('emailaddress')
+            phone = request.form.get('telephonenumber')
+            password = request.form.get('password')
+            userId = storeUserId['userId']
+
+            update_user(name, location, branchnumber, emailaddress, phone, password, userId)
+            flash("Customer information updated successfully.", "success")
+            return redirect(url_for('handler.delivery'))
+        else:
+            flash("Unauthorized update of store data.", "error")
+            return redirect(url_for('error_page'))
+    
+    return render_template("auth/adminedit.html", store=store)
+
+# Winkel verwijderen
+@bp.route('/deletestore/<int:branchnumber>')
+@login_required
+def deleteuser(branchnumber):
+    store = fetch_users(branchnumber)
+    if store is None:
+        abort(404)
+
+
+    deleteQuery = "DELETE FROM User WHERE branchnumber = %s "
+    execute_query(deleteQuery, branchnumber)
+
+    return redirect(url_for('handler.delivery'))
 
 
 # Logs the user or admin in, based on isHandler

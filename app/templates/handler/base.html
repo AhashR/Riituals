@@ -1,1 +1,18 @@
-Deze pagina is ter illustratie; al log je in als beheerder, krijg je deze webpagina te zien. De beheerder kan hiermee de gebruikers beheren en nieuwe gebruikers aanmaken. 
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block header %}
+  
+  <h1>Welkom, {{ g.user['name'] }}.</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    Deze pagina is ter illustratie; al log je in als beheerder, krijg je deze webpagina te zien. De beheerder kan hiermee de gebruikers beheren en nieuwe gebruikers aanmaken. 
+  </p>
+{% endblock %}
+
+
+
+
+
+

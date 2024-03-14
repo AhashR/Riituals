@@ -6,11 +6,10 @@ from app.db import select_all, select_one, execute_query
 
 @bp.route('/')
 def index():
+    if g.user is not None and g.user['isHandler']:
+        return redirect(url_for('handler.index'))
     return render_template("index.html")
 
-@bp.route('/main/controltower')
-def controltower():
-    return render_template("controltower.html")
 
 @bp.route('/main/agenda')
 def agenda():
