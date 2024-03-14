@@ -5,19 +5,45 @@ USE `Rituals`;
 -- https://www.w3schools.com/sql/sql_comments.asp
 -- Create a User table, we probably need a login system
 
--- Handlers table
+CREATE TABLE `Location`(
+    -- Minimal user table, adjust up to your needs
+	`locationId` INT NOT NULL AUTO_INCREMENT,	
+    `userLocation` VARCHAR(50) NOT NULL,
+    PRIMARY KEY(`locationId`)
+);
 
 CREATE TABLE `User`(
     -- Minimal user table, adjust up to your needs
 	`userId` INT NOT NULL AUTO_INCREMENT,	
     `name` VARCHAR(50) NOT NULL,
-    `location` VARCHAR(100),
+    `locationId` INT,
     `branchnumber` VARCHAR(50),
 	`emailaddress` VARCHAR(250) NOT NULL,
     `telephonenumber` VARCHAR(15),
     `password` VARCHAR(15) NOT NULL,
     `isHandler` BOOLEAN,
-    PRIMARY KEY(`userId`)
+    PRIMARY KEY(`userId`),
+    FOREIGN KEY (`locationId`) REFERENCES `Location`(`locationId`)
+);
+
+CREATE TABLE `Deliverydate`(
+    -- Minimal user table, adjust up to your needs
+	`dateId` INT NOT NULL AUTO_INCREMENT,	
+    `arrivalDate` DATE NOT NULL,
+    PRIMARY KEY(`dateId`)
+);
+
+CREATE TABLE `Deliveries`(
+    -- Minimal user table, adjust up to your needs
+	`deliveryId` INT NOT NULL AUTO_INCREMENT,	
+    `departureTime` TIME NOT NULL,
+    `arrivalTime` TIME,
+    `arrivalEstimate` TIME NOT NULL,
+	`dateId` INT NOT NULL,
+    `userId` INT,
+    PRIMARY KEY(`deliveryId`),
+    FOREIGN KEY (`dateId`) REFERENCES `Deliverydate`(`dateId`),
+    FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
 );
 
 CREATE TABLE `Deliverydate`(

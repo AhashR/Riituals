@@ -1,5 +1,5 @@
 # File provided by HBO-ICT
-from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required, fetch_users, admin_update_user, fetch_userid
+from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required, fetch_users, check_location, add_location, fetch_userid, fetch_user
 from app.db import select_all, select_one, execute_query
 
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
@@ -8,16 +8,16 @@ from flask import abort, flash, redirect, render_template, url_for, g, request, 
 @bp.route('/register', methods=['GET', 'POST'])
 @admin_required
 def register():
-        
-    # Add the required multiline docstring here
     if request.method == 'POST':
         name = request.form.get('name')
         location = request.form.get('location')
+        locationId = check_location(location)
         branchnumber = request.form.get('branchnumber')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        add_user(name, location, branchnumber, email, phone, password)
+  
+        add_user(name, locationId, branchnumber, email, phone, password)
         return redirect(url_for('main.index'))
 
     return render_template("auth/register.html")
@@ -29,11 +29,12 @@ def registeradmin():
     if request.method == 'POST':
         name = request.form.get('name')
         location = request.form.get('location')
+        locationId = check_location(location)
         branchnumber = request.form.get('branchnumber')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        add_admin(name, location, branchnumber, email, phone, password)
+        add_admin(name, locationId, branchnumber, email, phone, password)
         return redirect(url_for('main.index'))
 
     return render_template("auth/registerbeh.html")
@@ -42,20 +43,22 @@ def registeradmin():
 @bp.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
+    user = fetch_userid(g.user['userId'])
     if request.method == 'POST':
         userId = g.user['userId']
         name = request.form.get('name')
         location = request.form.get('location')
+        locationId = check_location(location)
         branchnumber = request.form.get('branchnumber')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        result = update_user(g.user['userId'], name, location, branchnumber, email, phone, password)
+        result = update_user(g.user['userId'], name, locationId, branchnumber, email, phone, password)
         print (result)
-        update_user(name, location, branchnumber, email, phone, password, userId)
+        update_user(name, locationId, branchnumber, email, phone, password, userId)
         return redirect(url_for('main.index'))
 
-    return render_template("auth/edit.html", user=g.user)
+    return render_template("auth/edit.html", user=user)
 
 
 # Wijzigen winkelinformatie
@@ -73,16 +76,16 @@ def edituser(branchnumber):
         return redirect(url_for('handler.delivery'))
     
     if request.method == 'POST':
-        if storeUserId:
+        if store:
             name = request.form.get('name')
             location = request.form.get('location')
-            branchnumber = request.form.get('branchnumber')
+            locationId = check_location(location)
             emailaddress = request.form.get('emailaddress')
             phone = request.form.get('telephonenumber')
             password = request.form.get('password')
             userId = storeUserId['userId']
 
-            update_user(name, location, branchnumber, emailaddress, phone, password, userId)
+            update_user(name, locationId, branchnumber, emailaddress, phone, password, userId)
             flash("Customer information updated successfully.", "success")
             return redirect(url_for('handler.delivery'))
         else:
@@ -95,7 +98,7 @@ def edituser(branchnumber):
 @bp.route('/deletestore/<int:branchnumber>')
 @login_required
 def deleteuser(branchnumber):
-    store = fetch_users(branchnumber)
+    store = fetch_user(branchnumber)
     if store is None:
         abort(404)
 
