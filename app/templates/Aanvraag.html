@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aanvraagformulier Extra Voorraad</title>
+</head>
+<body>
+  <h2>Aanvraagformulier Extra Voorraad</h2>
+  <form action="verwerkingscript.php" method="post">
+    <label for="productnaam">Productnaam:</label><br>
+    <input type="text" id="productnaam" name="productnaam" required><br>
+    <label for="hoeveelheid">Gewenste hoeveelheid:</label><br>
+    <input type="number" id="hoeveelheid" name="hoeveelheid" min="1" required><br>
+    <label for="reden">Reden aanvraag:</label><br>
+    <textarea id="reden" name="reden" rows="4" cols="50" required></textarea><br>
+    <input type="submit" value="Verstuur">
+  </form>
+</body>
+</html>

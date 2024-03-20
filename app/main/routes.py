@@ -15,3 +15,7 @@ def controltower():
 @bp.route('/main/agenda')
 def agenda():
     return render_template("agenda.html")
+
+@bp.route('/main/dag1')
+def dag1():
+    return render_template("dag1.html")
