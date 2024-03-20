@@ -30,11 +30,10 @@ def registeradmin():
         name = request.form.get('name')
         location = request.form.get('location')
         locationId = check_location(location)
-        branchnumber = request.form.get('branchnumber')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        add_admin(name, locationId, branchnumber, email, phone, password)
+        add_admin(name, locationId, email, phone, password)
         return redirect(url_for('main.index'))
 
     return render_template("auth/registerbeh.html")
@@ -139,4 +138,3 @@ def logout():
 def users():
     users = select_all("SELECT * from User", None)
     return render_template("auth/users.html", users=users)
-    
