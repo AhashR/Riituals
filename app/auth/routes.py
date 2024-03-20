@@ -1,5 +1,5 @@
 # File provided by HBO-ICT
-from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required, fetch_users, check_location, add_location, fetch_userid
+from app.auth import bp, add_user, add_admin, update_user, login_required, admin_required, fetch_users, check_location, add_location, fetch_userid, fetch_user
 from app.db import select_all, select_one, execute_query
 
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
@@ -30,11 +30,10 @@ def registeradmin():
         name = request.form.get('name')
         location = request.form.get('location')
         locationId = check_location(location)
-        branchnumber = request.form.get('branchnumber')
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
-        add_admin(name, locationId, branchnumber, email, phone, password)
+        add_admin(name, locationId, email, phone, password)
         return redirect(url_for('main.index'))
 
     return render_template("auth/registerbeh.html")
@@ -98,7 +97,7 @@ def edituser(branchnumber):
 @bp.route('/deletestore/<int:branchnumber>')
 @login_required
 def deleteuser(branchnumber):
-    store = fetch_users(branchnumber)
+    store = fetch_user(branchnumber)
     if store is None:
         abort(404)
 
@@ -139,4 +138,3 @@ def logout():
 def users():
     users = select_all("SELECT * from User", None)
     return render_template("auth/users.html", users=users)
-    

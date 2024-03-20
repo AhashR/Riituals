@@ -28,9 +28,9 @@ def add_user(name, locationId, branchnumber, email, phone, password):
     values = (name, locationId, branchnumber, email, phone, password)
     execute_query(query, values)
 
-def add_admin(name, locationId, branchnumber, email, phone, password):
-    query = "INSERT INTO User (name, locationId, branchnumber, emailaddress, telephonenumber, password, isHandler) VALUES (%s, %s, %s, %s, %s, %s, 1)"
-    values = (name, locationId, branchnumber, email, phone, password)
+def add_admin(name, locationId, email, phone, password):
+    query = "INSERT INTO User (name, locationId, emailaddress, telephonenumber, password, isHandler) VALUES (%s, %s, %s, %s, %s, 1)"
+    values = (name, locationId, email, phone, password)
     execute_query(query, values)
     
 # gebruiker gegevens aanpassen zoals naam en wachtwoord gegevens #
@@ -44,9 +44,10 @@ def fetch_users(branchnumber):
     return select_all("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationId WHERE User.isHandler = 0 AND branchnumber = %s", (branchnumber,))
 
 # Selects all users that are not handlers and have the same branchnumber
-def fetch_users(branchnumber):
+def fetch_user(branchnumber):
     return select_one("SELECT * FROM User WHERE branchnumber = %s", (branchnumber,))
 # Selects the user where the userId is equal to the userId
+
 def fetch_userid(userId):
   return select_one("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationId WHERE User.userId = %s", (userId,))
 
