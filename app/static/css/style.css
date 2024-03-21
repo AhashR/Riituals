@@ -1,3 +1,4 @@
+
 h1 {
     text-align: center;
     color: rgb(255, 255, 255);
@@ -70,17 +71,8 @@ a, a:link, a:visited {
   color: rgb(255, 255, 255);
 }
 
-
 tr.clicked {
   background-color: #abc;
-}
-
-td {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: larger;
-  font-weight: 700;
-  min-width: 20px;
 }
 
 #alignleft
@@ -90,7 +82,7 @@ td {
 }
 
 th {
-  background-color: darkblue;
+  background-color: #545454;
   color: white;
   font-size: 20px;
 }

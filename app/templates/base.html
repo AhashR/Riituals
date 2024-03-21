@@ -18,8 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <div>
+  <body style="background-color: rgb(250,249,247);">
         <style data-emotion="css-global 8xpctl">
           *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg
                 *, symbol *):not(input[type="radio"])) {
@@ -336,14 +335,13 @@
                  </clipPath>
                </defs></svg>
    </a>
-  
-            {% endif %}
-    
+{% endif %}
 </div>
 </header>
-<div>
-      {% block content %}{% endblock %}
-    </div>
-    
+
+{% block content %}
+
+{% endblock %}
+
   </body>
 </html>
