@@ -310,8 +310,8 @@
             {% endif %}
     
             {% if g.user %}
-              <li><a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a></li>
-              <li><a href="{{ url_for('auth.logout') }}">Uitloggen</a></li>
+              <a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a>
+              <a href="{{ url_for('auth.logout') }}">Logout</a>
             {% else %}
     
             <a href="{{ url_for('auth.login') }}" class="css-4fqci6 float-md-right float-none">

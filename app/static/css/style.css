@@ -68,7 +68,7 @@ body {
     color: rgb(255, 255, 255);
 }
 a, a:link, a:visited {
-  color: rgb(255, 255, 255);
+  color: black;
 }
 
 tr.clicked {
