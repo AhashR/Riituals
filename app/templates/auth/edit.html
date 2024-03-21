@@ -6,19 +6,19 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+  <form method="post" action="{{ url_for('auth.edituser', branchnumber=user['name']) }}">
     <table>
       <tr>
         <td class="fitwidth">Straatnaam + huisnummer: </td>
-        <td><input type="text" name="name"/></td> 
+        <td><input type="text" name="name" value="{{ user['name'] }}"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">Plaatsnaam: </td>
-        <td><input type="text" name="location"/></td> 
+        <td><input type="text" name="location" value="{{ user['locationId] }}"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">E-mailadres:</td>
-        <td><input type="email" name="emailaddress"/></td>
+        <td><input type="email" name="emailaddress" value=""/></td>
       </tr>
       <tr>
         <td class="fitwidth">Telefoonnummer:</td>
@@ -33,27 +33,27 @@
 <form method="post">
   <div class="form-group">
     <label for="name">Straatnaam + huisnummer:</label>
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" id="name" name="name" value="{{ user['name'] }}">
   </div>
   <div class="form-group">
     <label for="location">Plaatsnaam:</label>
-    <input type="text" class="form-control" id="location" name="location">
+    <input type="text" class="form-control" id="location" name="location" value="{{ user['locationId'] }}">
   </div>
   <div class="form-group">
     <label for="branchnumber">Filiaalnummer:</label>
-    <input type="text" class="form-control" id="branchnumber" name="branchnumber">
+    <input type="text" class="form-control" id="branchnumber" name="branchnumber" value="{{ user['branchnumber'] }}">
   </div>
   <div class="form-group">
     <label for="emailaddress">E-mailadres:</label>
-    <input type="email" class="form-control" id="emailaddress" name="emailaddress">
+    <input type="email" class="form-control" id="emailaddress" name="emailaddress" value="{{ user['emailaddress'] }}">
   </div>
   <div class="form-group">
     <label for="telephonenumber">Telefoonnummer:</label>
-    <input type="text" class="form-control" id="telephonenumber" name="telephonenumber">
+    <input type="text" class="form-control" id="telephonenumber" name="telephonenumber" value="{{ user['telephonenumber'] }}">
   </div>
   <div class="form-group">
     <label for="password">Wachtwoord:</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <input type="password" class="form-control" id="password" name="password" value="{{ user['password'] }}">
   </div>
   <button type="submit" class="btn btn-primary" id="more">Wijzigen</button>
 </form>
