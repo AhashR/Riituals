@@ -40,7 +40,7 @@
         {% for store in stores %}
           <tr>
             <td>{{ store['branchnumber'] }}</td>
-            <td><a href="{{ url_for('handler.agenda', userId=store['userId']) }}">{{ store['name'] }}</a></td>
+            <td><a href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ store['name'] }}</a></td>
             <td>{{ store['userLocation'] }}</td>
             <td>{{ store['emailaddress'] }}</td>
             <td>{{ store['telephonenumber'] }}</td>
