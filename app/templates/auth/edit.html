@@ -1,39 +1,60 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Gegevens wijzigen{% endblock %}</h1>
+  <h1>{% block title %}Registeren{% endblock %}</h1>
+  <h2>Administrator</h2>
 {% endblock %}
 
 {% block content %}
-  <form method="post" action="{{ url_for('auth.edit')}}">
+  <form method="post">
     <table>
       <tr>
         <td class="fitwidth">Straatnaam + huisnummer: </td>
-        <td><input type="text" name="name" value="{{ user['name'] }}"/></td> 
+        <td><input type="text" name="name"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">Plaatsnaam: </td>
-        <td><input type="text" name="location" value="{{ user['userLocation'] }}"/></td> 
-      </tr>
-      <tr>
-        <td class="fitwidth">Filiaalnummer: </td>
-        <td><input type="text" name="branchnumber" value="{{ user['branchnumber'] }}"/></td> 
+        <td><input type="text" name="location"/></td> 
       </tr>
       <tr>
         <td class="fitwidth">E-mailadres:</td>
-        <td><input type="email" name="emailaddress" value="{{ user['emailaddress'] }}"/></td>
+        <td><input type="email" name="emailaddress"/></td>
       </tr>
       <tr>
         <td class="fitwidth">Telefoonnummer:</td>
-        <td><input type="text" name="telephonenumber" value="{{ user['telephonenumber'] }}"/></td>
+        <td><input type="text" name="telephonenumber" value=""/></td>
       </tr>
       <tr>
         <td class="fitwidth">Wachtwoord:</td>
-        <td><input type="password" name="password" value="{{ user['password'] }}"/></td>
-      </tr>
-      <tr>
-        <td><button id="more" type="submit">Wijzigen</button></td>
+        <td><input type="password" name="password" value=""/></td>
       </tr>
     </table>
   </form>
+<form method="post">
+  <div class="form-group">
+    <label for="name">Straatnaam + huisnummer:</label>
+    <input type="text" class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="location">Plaatsnaam:</label>
+    <input type="text" class="form-control" id="location" name="location">
+  </div>
+  <div class="form-group">
+    <label for="branchnumber">Filiaalnummer:</label>
+    <input type="text" class="form-control" id="branchnumber" name="branchnumber">
+  </div>
+  <div class="form-group">
+    <label for="emailaddress">E-mailadres:</label>
+    <input type="email" class="form-control" id="emailaddress" name="emailaddress">
+  </div>
+  <div class="form-group">
+    <label for="telephonenumber">Telefoonnummer:</label>
+    <input type="text" class="form-control" id="telephonenumber" name="telephonenumber">
+  </div>
+  <div class="form-group">
+    <label for="password">Wachtwoord:</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary" id="more">Wijzigen</button>
+</form>
 {% endblock %}

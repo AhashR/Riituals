@@ -1,4 +1,4 @@
-from app.handler import bp
+from app.handler import bp, check_date, userBranchnumber
 from app.db import select_all, execute_query, select_one
 from app.auth import admin_required, login_required
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
@@ -36,19 +36,19 @@ def agenda(branchnumber):
 def controltower():
     return render_template("handler/controltower.html")
 
-
-@bp.route('/beheerdertijden', methods=['GET', 'POST'])
+@bp.route('/planning/<int:branchnumber>/<selectedDate>', methods=['GET', 'POST'])
 @login_required
-def beheerdertijden():
+def beheerdertijden(branchnumber, selectedDate):
     if request.method == 'POST':
-        # Verwerk het formulier en voeg de gegevens toe aan de database
-        userId = request.form['store']
+        date = selectedDate
+        dateId = check_date(date)
+        userId = userBranchnumber(branchnumber)
         arrival_time = request.form['arrivalTime']
         arrival_estimate = request.form['arrivalEstimate']
         departure_time = request.form['departureTime']
         
         # Voeg de gegevens toe aan de tabel Deliveries, gebruikmakend van de geselecteerde winkel
-        execute_query("INSERT INTO Deliveries (userId, departureTime, arrivalTime, arrivalEstimate) VALUES (%s, %s, %s, %s)", (userId, departure_time, arrival_time, arrival_estimate))
+        execute_query("INSERT INTO Deliveries (userId, departureTime, arrivalTime, arrivalEstimate, dateId) VALUES (%s, %s, %s, %s, %s)", (userId, departure_time, arrival_time, arrival_estimate, dateId))
         
         flash('Aflevertijden succesvol toegevoegd', 'success')
         # return redirect(url_for('beheerdertijden'))
@@ -56,6 +56,8 @@ def beheerdertijden():
     # Als het een GET-verzoek is, haal dan de lijst met winkels op en render de pagina
     stores = select_all("SELECT * FROM User WHERE isHandler = 0")
     return render_template("handler/beheerdertijden.html", stores=stores)
+
+
 
 
 

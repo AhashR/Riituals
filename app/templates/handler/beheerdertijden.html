@@ -12,21 +12,15 @@
 <body>
     <h1>Beheerder Aflevertijden Winkels</h1>
     <form method="post" >
-        <label for="store">Selecteer een winkel:</label>
-        <select id="store" name="store">
-            {% for store in stores %}
-                <option value="{{ store.userId }}">{{ store.name }}</option>
-            {% endfor %}
-        </select><br><br>
 
-        <label for="arrivalTime">Aankomsttijd:</label>
-        <input type="time" id="arrivalTime" name="arrivalTime" required><br><br>
+        <label for="departureTime">Vertrektijd:</label>
+        <input type="time" id="departureTime" name="departureTime" required><br><br>
 
         <label for="arrivalEstimate">Aankomstschatting:</label>
         <input type="time" id="arrivalEstimate" name="arrivalEstimate" required><br><br>
 
-        <label for="departureTime">Vertrektijd:</label>
-        <input type="time" id="departureTime" name="departureTime" required><br><br>
+        <label for="arrivalTime">Aankomsttijd:</label>
+        <input type="time" id="arrivalTime" name="arrivalTime" required><br><br>
 
         <input type="submit" value="Opslaan">
     </form>

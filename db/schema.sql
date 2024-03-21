@@ -43,7 +43,7 @@ CREATE TABLE `Deliveries`(
     `userId` INT,
     PRIMARY KEY(`deliveryId`),
     FOREIGN KEY (`dateId`) REFERENCES `Deliverydate`(`dateId`),
-    FOREIGN KEY (`userId`) REFERENCES `User`(`userId`)
+    FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE SET NULL
 );
 -- Add your create tables SQL here. Make sure to include the indexes!
 -- Alternative: use an ORM like SQLAlchemy. Then you will not need this file.
