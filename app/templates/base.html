@@ -304,6 +304,7 @@
             
             {% if g.isHandler %}
             <li><a href="{{ url_for('handler.delivery') }}">Winkels</a></li>
+            <li><a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a></li>
     
             {% else %}
             <li><a class="libre-baskerville-regular text-decoration-none px-3" style="font-size: 14px;" href="{{ url_for('handler.controltower') }}">Bestel en levering</a></li>
@@ -311,7 +312,6 @@
             {% endif %}
     
             {% if g.user %}
-              <li><a href="{{ url_for('auth.edit') }}">{{ g.user['name'] }}</a></li>
               <li><a href="{{ url_for('auth.logout') }}">Uitloggen</a></li>
             {% else %}
     

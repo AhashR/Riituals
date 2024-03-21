@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Registeren{% endblock %}</h1>
+  <h1>{% block title %}Wijzigen{% endblock %}</h1>
   <h2>Administrator</h2>
 {% endblock %}
 
 {% block content %}
-  <form method="post" action="{{ url_for('auth.edituser', branchnumber=user['name']) }}">
+  <form method="post" action="{{ url_for('auth.edit') }}">
     <table>
       <tr>
         <td class="fitwidth">Straatnaam + huisnummer: </td>

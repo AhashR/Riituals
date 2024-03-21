@@ -25,9 +25,6 @@ def register():
 # Registers a new admin in the database
 @bp.route('/beheerder', methods=['GET', 'POST'])
 def registeradmin():
-    """
-    Add the required multiline docstring here
-    """
     if request.method == 'POST':
         name = request.form.get('name')
         location = request.form.get('location')
@@ -60,7 +57,7 @@ def edit():
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
         result = update_user(g.user['userId'], name, locationId, branchnumber, email, phone, password)
-        print (result)
+        print(result)
         update_user(name, locationId, branchnumber, email, phone, password, userId)
         return redirect(url_for('main.index'))
 
