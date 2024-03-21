@@ -10,12 +10,12 @@ from flask import session, redirect, url_for
 bp = Blueprint('auth', __name__)
 
 def check_location(location):
-    result = select_one("SELECT locationId FROM Location WHERE userLocation = %s", location)
+    result = select_one("SELECT locationId FROM Location WHERE userLocation = %s", (location,))
     if result is None:
         query = "INSERT INTO Location (userLocation) VALUES (%s)"
-        values = (location)
+        values = (location,)
         execute_query(query, values)
-        result = select_one("SELECT locationId FROM Location WHERE userLocation = %s", location)
+        result = select_one("SELECT locationId FROM Location WHERE userLocation = %s", (location,))
     return result['locationId']
 
 def add_location(location):

@@ -25,11 +25,18 @@ def register():
 # Registers a new admin in the database
 @bp.route('/beheerder', methods=['GET', 'POST'])
 def registeradmin():
-    # Add the required multiline docstring here
+    """
+    Add the required multiline docstring here
+    """
     if request.method == 'POST':
         name = request.form.get('name')
         location = request.form.get('location')
-        locationId = check_location(location)
+        result = check_location(location)
+        if result is None:
+            print("Location not found")
+            locationId = None  # Assign a default value to locationId if location is not found
+        else:
+            locationId = result
         email = request.form.get('emailaddress')
         phone = request.form.get('telephonenumber')
         password = request.form.get('password')
