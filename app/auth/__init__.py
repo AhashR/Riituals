@@ -46,8 +46,8 @@ def fetch_users(branchnumber):
 # Selects all users that are not handlers and have the same branchnumber
 def fetch_user(branchnumber):
     return select_one("SELECT * FROM User WHERE branchnumber = %s", (branchnumber,))
-# Selects the user where the userId is equal to the userId
 
+# Selects the user where the userId is equal to the userId
 def fetch_userid(userId):
   return select_one("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationId WHERE User.userId = %s", (userId,))
 

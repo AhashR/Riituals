@@ -17,8 +17,8 @@ def index():
 def delivery():
     query = request.args.get('q')
     if query:
-        stores = select_all("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationid WHERE User.isHandler = 0 AND (branchnumber LIKE %s OR Location.userLocation LIKE %s OR emailaddress LIKE %s OR telephonenumber LIKE %s)", 
-                            ('%' + query + '%', '%' + query + '%', '%' + query + '%', '%' + query + '%'))
+        stores = select_all("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationid WHERE User.isHandler = 0 AND (branchnumber LIKE %s OR Location.userLocation LIKE %s OR emailaddress LIKE %s OR telephonenumber LIKE %s OR name LIKE %s)", 
+                            ('%' + query + '%', '%' + query + '%', '%' + query + '%', '%' + query + '%', '%' + query + '%'))
     else:
         stores = select_all("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationid WHERE User.isHandler = 0")
     return render_template("handler/delivery.html", stores=stores)
