@@ -14,7 +14,16 @@
     <form method="post" >
 
         <label for="departureTime">Vertrektijd:</label>
-        <input type="time" id="departureTime" name="departureTime" required><br><br>
+        <input type="time" id="click-trigger" name="departureTime" required><br><br>
+        <script>
+            const timepicker = new TimePicker('#click-trigger', {
+                theme: 'dark',
+                lang: 'pt',
+            });
+            timepicker.on('change', (evt) => {
+                console.log(evt);
+            });
+            </script>
 
         <label for="arrivalEstimate">Aankomstschatting:</label>
         <input type="time" id="arrivalEstimate" name="arrivalEstimate" required><br><br>
