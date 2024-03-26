@@ -3,6 +3,7 @@ from app.db import select_all, execute_query, select_one
 from app.auth import admin_required, login_required
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
 from datetime import datetime
+from flask import request
 
 # Shows the User the main page of the handler.
 @bp.route('/', methods=['GET', 'POST'])
@@ -57,7 +58,9 @@ def beheerdertijden(branchnumber, selectedDate):
     stores = select_all("SELECT * FROM User WHERE isHandler = 0")
     return render_template("handler/beheerdertijden.html", stores=stores)
 
-
+@bp.route('/request')
+def request():
+    return render_template("handler/aanvraag.html")
 
 
 
