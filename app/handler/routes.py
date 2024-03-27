@@ -2,8 +2,6 @@ from app.handler import bp, check_date, userBranchnumber
 from app.db import select_all, execute_query, select_one
 from app.auth import admin_required, login_required
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
-from datetime import datetime
-from flask import request
 
 # Shows the User the main page of the handler.
 @bp.route('/', methods=['GET', 'POST'])
@@ -23,9 +21,6 @@ def delivery():
     else:
         stores = select_all("SELECT * FROM User INNER JOIN Location ON User.locationId = Location.locationid WHERE User.isHandler = 0")
     return render_template("handler/delivery.html", stores=stores)
-
-    # Add the following return statement
-    return "Valid response"
 
 # Shows the user an agenda of a store they have selected
 @bp.route('/agenda/<int:branchnumber>', methods=['GET', 'POST'])
@@ -59,7 +54,7 @@ def beheerdertijden(branchnumber, selectedDate):
     return render_template("handler/beheerdertijden.html", stores=stores)
 
 @bp.route('/request')
-def request():
+def request_delivery():
     return render_template("handler/aanvraag.html")
 
 
