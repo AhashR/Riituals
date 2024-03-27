@@ -17,10 +17,6 @@ def userBranchnumber(branchnumber):
     result = select_one("SELECT userId FROM User WHERE branchnumber = %s", branchnumber)
     return result['userId']
 
-from app.db import execute_query
-
-from app.db import select_one
-
 def user_delivery(dateId, branchnumber, userId, departure_time, arrival_time, arrival_estimate):
     query = "SELECT User.userId FROM Deliveries INNER JOIN User ON User.userId = Deliveries.userId WHERE Deliveries.dateId = %s AND User.branchnumber = %s"
     values = (dateId, branchnumber)
