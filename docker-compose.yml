@@ -12,10 +12,10 @@
 
 version: "3.7"
 services:
-  YOUR_UNIQUE_PROJECTID:
+  Rituals:
     image: gitlab.fdmci.hva.nl:5050/ramacha/Rituals/main:latest
     restart: on-failure:2
-    container_name: YOUR_UNIQUE_PROJECTID
+    container_name: Rituals
 #    environment:
 #      - DISPLAY=:0.0
     volumes:
@@ -31,17 +31,17 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proxy
       - traefik.http.routers.traefik-secure.entrypoints=websecure
-      - "traefik.http.routers.YOUR_UNIQUE_PROJECTID.rule=Host(`YOUR_UNIQUE_PROJECTID.hva-fys.nl`)"
-#      - "traefik.http.routers.YOUR_UNIQUE_PROJECTID.tls=true"
-      - "traefik.http.routers.YOUR_UNIQUE_PROJECTID.service=YOUR_UNIQUE_PROJECTID-service"
-      - "traefik.http.services.YOUR_UNIQUE_PROJECTID-service.loadBalancer.server.port=5000"
+      - "traefik.http.routers.Rituals.rule=Host(`Rituals.hva-fys.nl`)"
+#      - "traefik.http.routers.Rituals.tls=true"
+      - "traefik.http.routers.Rituals.service=Rituals-service"
+      - "traefik.http.services.Rituals-service.loadBalancer.server.port=5000"
 
   # This is your database in your docker cloud environment
-  YOUR_UNIQUE_PROJECTID_db:
+  Rituals_db:
     image: mariadb:latest
     restart: unless-stopped
     networks:
-      - YOUR_UNIQUE_PROJECTID_internal
+      - Rituals_internal
     environment:
       MYSQL_ROOT_PASSWORD: rituelen
       MYSQL_DATABASE: Rituals
@@ -57,6 +57,6 @@ services:
 #  data:
 
 networks:
-  YOUR_UNIQUE_PROJECTID_internal:
+  Rituals_internal:
   proxy:
     external: true
