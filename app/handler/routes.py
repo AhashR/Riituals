@@ -1,4 +1,4 @@
-from app.handler import bp, check_date, userBranchnumber
+from app.handler import bp, check_date, userBranchnumber, user_delivery
 from app.db import select_all, execute_query, select_one
 from app.auth import admin_required, login_required
 from flask import abort, flash, redirect, render_template, url_for, g, request, session
@@ -43,8 +43,7 @@ def beheerdertijden(branchnumber, selectedDate):
         arrival_estimate = request.form['arrivalEstimate']
         departure_time = request.form['departureTime']
         
-        # Voeg de gegevens toe aan de tabel Deliveries, gebruikmakend van de geselecteerde winkel
-        execute_query("INSERT INTO Deliveries (userId, departureTime, arrivalTime, arrivalEstimate, dateId) VALUES (%s, %s, %s, %s, %s)", (userId, departure_time, arrival_time, arrival_estimate, dateId))
+        user_delivery(dateId, branchnumber, userId, departure_time, arrival_time, arrival_estimate)
         
         flash('Aflevertijden succesvol toegevoegd', 'success')
         # return redirect(url_for('beheerdertijden'))
@@ -56,6 +55,8 @@ def beheerdertijden(branchnumber, selectedDate):
 @bp.route('/request')
 def request_delivery():
     return render_template("handler/aanvraag.html")
+
+
 
 
 
