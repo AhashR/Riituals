@@ -13,7 +13,7 @@
 version: "3.7"
 services:
   YOUR_UNIQUE_PROJECTID:
-    image: gitlab.fdmci.hva.nl:5050/GITLABUSER/PROJECTNAME/main:latest
+    image: gitlab.fdmci.hva.nl:5050/ramacha/Rituals/main:latest
     restart: on-failure:2
     container_name: YOUR_UNIQUE_PROJECTID
 #    environment:
@@ -43,10 +43,10 @@ services:
     networks:
       - YOUR_UNIQUE_PROJECTID_internal
     environment:
-      MYSQL_ROOT_PASSWORD: DB_PASSWORD
-      MYSQL_DATABASE: Who_Pays_What
-      MYSQL_USER: WhoPaysWhatUser
-      MYSQL_PASSWORD: Whopayswhat1
+      MYSQL_ROOT_PASSWORD: rituelen
+      MYSQL_DATABASE: Rituals
+      MYSQL_USER: RitualsUser
+      MYSQL_PASSWORD: RitualsPassword
     volumes:
       - ./db_data:/var/lib/mysql
       - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
