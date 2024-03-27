@@ -6,30 +6,6 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <table>
-      <tr>
-        <td class="fitwidth">Straatnaam + huisnummer: </td>
-        <td><input type="text" name="name" value="{{ store[0]['name'] }}"/></td> 
-      </tr>
-      <tr>
-        <td class="fitwidth">Plaatsnaam: </td>
-        <td><input type="text" name="location" value="{{ store[0]['userLocation'] }}"/></td> 
-      </tr>
-      <tr>
-        <td class="fitwidth">E-mailadres:</td>
-        <td><input type="email" name="emailaddress" value="{{ store[0]['emailaddress'] }}"/></td>
-      </tr>
-      <tr>
-        <td class="fitwidth">Telefoonnummer:</td>
-        <td><input type="text" name="telephonenumber" value="{{ store[0]['telephonenumber'] }}"/></td>
-      </tr>
-      <tr>
-        <td class="fitwidth">Wachtwoord:</td>
-        <td><input type="password" name="password" value="{{ store[0]['password'] }}"/></td>
-      </tr>
-    </table>
-  </form>
 <form method="post">
   <div class="form-group">
     <label for="name">Straatnaam + huisnummer:</label>
