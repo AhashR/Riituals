@@ -284,7 +284,11 @@
                   }
                   </style>
                 <a
+                {% if g.isHandler %}
+                  href="{{ url_for('handler.index') }}"
+                {% else %}
                   href="{{ url_for('main.index') }}"
+                {% endif %}
                   title="Rituals Logo"
                   class="css-1ml8wrq"  
                   ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 37">
