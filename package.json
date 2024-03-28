@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"
+    "bootstrap-icons": "^1.11.3",
+    "jquery-clock-timepicker": "^2.6.5",
+    "timepicker-ui": "^2.6.1",
+    "timepicker.js": "^4.1.0"
   }
 }

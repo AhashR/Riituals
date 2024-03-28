@@ -44,7 +44,13 @@
           <tr>
             <td></td>
             <td>{{ store['branchnumber'] }}</td>
-            <td><a style="color: black;" href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ store['name'] }}</a></td>
+            <td>
+              {% if store['branchnumber'] %}
+                  <a style="color: black;" href="{{ url_for('handler.agenda', branchnumber=store['branchnumber']) }}">{{ store['name'] }}</a>
+              {% else %}
+                  {{ store['name'] }}
+              {% endif %}
+          </td>
             <td>{{ store['userLocation'] }}</td>
             <td>{{ store['emailaddress'] }}</td>
             <td>{{ store['telephonenumber'] }}</td>

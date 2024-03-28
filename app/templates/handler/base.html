@@ -1,16 +1,62 @@
 {% extends 'base.html' %}
-{% block title %} Home {% endblock %}
+
 {% block header %}
-  
-  <h1>Welkom, {{ g.user['name'] }}.</h1>
 {% endblock %}
 
 {% block content %}
-  <p>
-    Deze pagina is ter illustratie; al log je in als beheerder, krijg je deze webpagina te zien. De beheerder kan hiermee de gebruikers beheren en nieuwe gebruikers aanmaken. 
-  </p>
-{% endblock %}
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ul>
 
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/img/image-001.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Sea">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/img/image-002.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image White">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/img/image-003.png" class="img-fluid rounded mx-auto d-block w-100 h-100" alt="Image Black & Gold">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col" style="background-color: white;">
+    <h1 class="text-center pt-5 pb-5">Welkom terug, {{ g.user['name'] }}</h1>
+
+    <div class="row" style="background-color: rgb(250,249,247);">
+        <p class=" text-center pb-5 pt-5 w-75 col-12">
+          U bent ingelogd bij het Rituals bestel-afleverschema. Door te klikken op Winkels kunt uw Rituals winkels toevoegen, wijzigen of verwijderen.
+        Vanuit de pagina 'Winkels' kunt u ook leveringen inplannen. Zoek de juiste winkel op en klik op de naam van de winkel. </p>
+
+        <p class=" text-center pb-1 pt-5 w-75 col-12">
+          Vanaf dit punt krijgt u een agenda te zien. Vanuit deze agenda kunt u leveringen inplannen. Klik hiervoor op de juiste dag en selecteer de juiste tijden.
+        Wilt u deze gegevens wijzigen? Druk op dezelfde datum als waarin u de levering heeft geplant en wijzig de gegevens. </p>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %} 
 
 
 
