@@ -18,6 +18,9 @@
     <table class="table text-dark">
       <thead>
         <tr>
+          <th>
+            <a href="{{ url_for('auth.register') }}">+</a>
+          </th>
           <th>Filiaalnummer</th>
           <th>Straatnaam</th>
           <th>Plaatsnaam</th>
@@ -39,6 +42,7 @@
       <tbody>
         {% for store in stores %}
           <tr>
+            <td></td>
             <td>{{ store['branchnumber'] }}</td>
             <td>
               {% if store['branchnumber'] %}
